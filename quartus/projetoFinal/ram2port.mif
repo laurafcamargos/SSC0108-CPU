@@ -1,0 +1,43 @@
+DEPTH = 256;               -- Tamanho da memória
+WIDTH = 8;                 -- Largura de cada palavra
+ADDRESS_RADIX = DEC;       -- Base do endereço (Decimal)
+DATA_RADIX = BIN;          -- Base dos dados (Binário)
+
+CONTENT BEGIN
+  -- IN A
+  0 : 01100000;           -- IN para o registrador A (op_code: 0110, reg: 0000)
+  -- IN B
+  1 : 01100001;           -- IN para o registrador B (op_code: 0110, reg: 0001)
+  -- MOV R, 0
+  2 : 11101010;           -- MOV R (reg 1010), valor imediato 0
+  3 : 00000000;           -- Valor imediato 0
+  -- LOOP_START:
+  -- CMP B, 0
+  4 : 10000001;           -- CMP B (reg: 0001), valor imediato 0
+  5 : 00000000;           -- Valor imediato 0
+  -- JEQ END_LOOP
+  6 : 11010101;           -- JEQ para endereço END_LOOP (13 em decimal)
+  7 : 00001101;           -- Endereço END_LOOP
+  -- ADD R, A
+  8 : 00011010;           -- ADD R (reg: 1010), A (reg: 0000)
+  -- STORE R, 255
+  9 : 10101010;           -- STORE R (reg: 1010), endereço 255
+  10 : 11111111;          -- Endereço 255
+  -- SUB B, 1
+  11 : 00100011;          -- SUB B (reg: 0001), valor imediato 1
+  12 : 00000001;          -- Valor imediato 1
+  -- MOV B, R
+  13 : 11100011;          -- MOV B (reg: 0001), R (reg: 1010)
+  -- LOAD R, 255
+  14 : 10011010;          -- LOAD R (reg: 1010), endereço 255
+  15 : 11111111;          -- Endereço 255
+  -- JMP LOOP_START
+  16 : 11000100;          -- JMP para endereço LOOP_START (4 em decimal)
+  -- END_LOOP:
+  -- OUT R
+  17 : 01111010;          -- OUT R (op_code: 0111, reg: 1010)
+  -- WAIT
+  18 : 11111111;          -- WAIT (op_code: 1111)
+  -- Preenche o restante da memória com zeros
+  [19..255] : 00000000;
+END;

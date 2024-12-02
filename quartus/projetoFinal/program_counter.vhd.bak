@@ -1,0 +1,33 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.std_logic_unsigned.ALL;
+
+ENTITY program_counter IS
+    PORT (
+        clk       : IN  std_logic;                   -- Clock
+        reset     : IN  std_logic;                   -- Reset
+        load      : IN  std_logic;                   -- Sinal para carregar um novo valor
+        increment : IN  std_logic;                   -- Sinal para incrementar
+        addr_in   : IN  std_logic_vector(7 downto 0);-- Endereço de entrada
+        addr_out  : OUT std_logic_vector(7 downto 0) -- Endereço de saída (valor atual do PC)
+    );
+END program_counter;
+
+ARCHITECTURE Behavioral OF program_counter IS
+    SIGNAL pc_value : std_logic_vector(7 downto 0) := (others => '0'); -- Valor interno do PC
+BEGIN
+    process(clk, reset)
+    begin
+        if reset = '1' then
+            pc_value <= (others => '0'); -- Resetar o PC para 0
+        elsif rising_edge(clk) then
+            if load = '1' then
+                pc_value <= addr_in; -- Carrega um novo valor no PC
+            elsif increment = '1' then
+                pc_value <= pc_value + 1; -- Incrementa o valor do PC
+            end if;
+        end if;
+    end process;
+
+    addr_out <= pc_value; -- Saída do valor atual do PC
+END Behavioral;

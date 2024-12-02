@@ -1,0 +1,188 @@
+-- Definindo a Unidade de Controle para um processador simples
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity UnidadeControle is
+    Port ( clk      : in STD_LOGIC;
+           reset    : in STD_LOGIC;
+           op_code  : in STD_LOGIC_VECTOR(3 downto 0);  -- Código de operação de 4 bits
+           reg1     : out STD_LOGIC_VECTOR(3 downto 0);  -- Sinal de controle para Reg1
+           reg2     : out STD_LOGIC_VECTOR(3 downto 0);  -- Sinal de controle para Reg2
+           alu_op   : out STD_LOGIC_VECTOR(2 downto 0);  -- Sinal de controle da ALU (operacões aritméticas, lógicas)
+           mem_read : out STD_LOGIC;  -- Controle de leitura de memória
+           mem_write: out STD_LOGIC;  -- Controle de escrita de memória
+           jump     : out STD_LOGIC;  -- Controle de salto (JMP)
+           eq_flag  : out STD_LOGIC;  -- Flag de igualdade para JEQ
+           gr_flag  : out STD_LOGIC;  -- Flag de maior para JGR
+           halt     : out STD_LOGIC  -- Sinal de parada ou espera
+           );
+end UnidadeControle;
+
+architecture Behavioral of UnidadeControle is
+begin
+
+    process(clk, reset)
+    begin
+        if reset = '1' then
+            -- Reseta os sinais de controle para o estado inicial
+            reg1     <= "0000";
+            reg2     <= "0000";
+            alu_op   <= "000";
+            mem_read <= '0';
+            mem_write <= '0';
+            jump     <= '0';
+            eq_flag  <= '0';
+            gr_flag  <= '0';
+            halt     <= '0';
+        elsif rising_edge(clk) then
+            -- Decodificação do OpCode
+            case op_code is
+                -- Operações aritméticas e lógicas
+                when "0000" =>  -- ADD
+                    alu_op   <= "000";  -- Código para ADD
+                    reg1     <= "0001";  -- Habilita Reg1
+                    reg2     <= "0010";  -- Habilita Reg2
+                    mem_read <= '0';  -- Não faz leitura de memória
+                    mem_write <= '0';  -- Não faz escrita em memória
+                    jump     <= '0';  -- Não há salto
+                    eq_flag  <= '0';  -- Não é comparação
+                    gr_flag  <= '0';  -- Não é comparação
+                    halt     <= '0';  -- Não há parada
+
+                when "0001" =>  -- SUB
+                    alu_op   <= "001";  -- Código para SUB
+                    reg1     <= "0001";  -- Habilita Reg1
+                    reg2     <= "0010";  -- Habilita Reg2
+                    mem_read <= '0';  -- Não faz leitura de memória
+                    mem_write <= '0';  -- Não faz escrita em memória
+                    jump     <= '0';  -- Não há salto
+                    eq_flag  <= '0';  -- Não é comparação
+                    gr_flag  <= '0';  -- Não é comparação
+                    halt     <= '0';  -- Não há parada
+
+                when "0010" =>  -- AND
+                    alu_op   <= "010";  -- Código para AND
+                    reg1     <= "0001";  -- Habilita Reg1
+                    reg2     <= "0010";  -- Habilita Reg2
+                    mem_read <= '0';  -- Não faz leitura de memória
+                    mem_write <= '0';  -- Não faz escrita em memória
+                    jump     <= '0';  -- Não há salto
+                    eq_flag  <= '0';  -- Não é comparação
+                    gr_flag  <= '0';  -- Não é comparação
+                    halt     <= '0';  -- Não há parada
+
+                when "0011" =>  -- OR
+                    alu_op   <= "011";  -- Código para OR
+                    reg1     <= "0001";  -- Habilita Reg1
+                    reg2     <= "0010";  -- Habilita Reg2
+                    mem_read <= '0';  -- Não faz leitura de memória
+                    mem_write <= '0';  -- Não faz escrita em memória
+                    jump     <= '0';  -- Não há salto
+                    eq_flag  <= '0';  -- Não é comparação
+                    gr_flag  <= '0';  -- Não é comparação
+                    halt     <= '0';  -- Não há parada
+
+                when "0100" =>  -- NOT
+                    alu_op   <= "100";  -- Código para NOT
+                    reg1     <= "0001";  -- Habilita Reg1
+                    reg2     <= "0000";  -- Não usa Reg2
+                    mem_read <= '0';  -- Não faz leitura de memória
+                    mem_write <= '0';  -- Não faz escrita em memória
+                    jump     <= '0';  -- Não há salto
+                    eq_flag  <= '0';  -- Não é comparação
+                    gr_flag  <= '0';  -- Não é comparação
+                    halt     <= '0';  -- Não há parada
+
+                when "0101" =>  -- CMP
+                    alu_op   <= "101";  -- Código para comparação
+                    reg1     <= "0001";  -- Habilita Reg1
+                    reg2     <= "0010";  -- Habilita Reg2
+                    mem_read <= '0';  -- Não faz leitura de memória
+                    mem_write <= '0';  -- Não faz escrita em memória
+                    jump     <= '0';  -- Não há salto
+                    eq_flag  <= '1';  -- Ativa flag de comparação
+                    gr_flag  <= '1';  -- Ativa flag de comparação
+                    halt     <= '0';  -- Não há parada
+
+                when "0110" =>  -- JMP
+                    alu_op   <= "000";  -- Nenhuma operação ALU necessária
+                    reg1     <= "0000";  -- Não usa Reg1
+                    reg2     <= "0000";  -- Não usa Reg2
+                    mem_read <= '0';  -- Não faz leitura de memória
+                    mem_write <= '0';  -- Não faz escrita em memória
+                    jump     <= '1';  -- Ativa salto
+                    eq_flag  <= '0';  -- Não é comparação
+                    gr_flag  <= '0';  -- Não é comparação
+                    halt     <= '0';  -- Não há parada
+
+                when "0111" =>  -- JEQ (salto se igual)
+                    alu_op   <= "000";  -- Nenhuma operação ALU necessária
+                    reg1     <= "0000";  -- Não usa Reg1
+                    reg2     <= "0000";  -- Não usa Reg2
+                    mem_read <= '0';  -- Não faz leitura de memória
+                    mem_write <= '0';  -- Não faz escrita em memória
+                    jump     <= '1';  -- Ativa salto
+                    eq_flag  <= '1';  -- Salta se a comparação for igual
+                    gr_flag  <= '0';  -- Não é comparação de maior
+                    halt     <= '0';  -- Não há parada
+
+                when "1000" =>  -- JGR (salto se maior)
+                    alu_op   <= "000";  -- Nenhuma operação ALU necessária
+                    reg1     <= "0000";  -- Não usa Reg1
+                    reg2     <= "0000";  -- Não usa Reg2
+                    mem_read <= '0';  -- Não faz leitura de memória
+                    mem_write <= '0';  -- Não faz escrita em memória
+                    jump     <= '1';  -- Ativa salto
+                    eq_flag  <= '0';  -- Não é comparação de igualdade
+                    gr_flag  <= '1';  -- Salta se a comparação for maior
+                    halt     <= '0';  -- Não há parada
+
+                when "1001" =>  -- LOAD
+                    alu_op   <= "000";  -- Nenhuma operação ALU necessária
+                    reg1     <= "0001";  -- Habilita Reg1
+                    reg2     <= "0000";  -- Não usa Reg2
+                    mem_read <= '1';  -- Ativa leitura de memória
+                    mem_write <= '0';  -- Não faz escrita em memória
+                    jump     <= '0';  -- Não há salto
+                    eq_flag  <= '0';  -- Não é comparação
+                    gr_flag  <= '0';  -- Não é comparação
+                    halt     <= '0';  -- Não há parada
+
+                when "1010" =>  -- STORE
+                    alu_op   <= "000";  -- Nenhuma operação ALU necessária
+                    reg1     <= "0001";  -- Habilita Reg1
+                    reg2     <= "0000";  -- Não usa Reg2
+                    mem_read <= '0';  -- Não faz leitura de memória
+                    mem_write <= '1';  -- Ativa escrita em memória
+                    jump     <= '0';  -- Não há salto
+                    eq_flag  <= '0';  -- Não é comparação
+                    gr_flag  <= '0';  -- Não é comparação
+                    halt     <= '0';  -- Não há parada
+
+                when "1110" =>  -- WAIT
+                    alu_op   <= "000";  -- Nenhuma operação ALU necessária
+                    reg1     <= "0000";  -- Não usa Reg1
+                    reg2     <= "0000";  -- Não usa Reg2
+                    mem_read <= '0';  -- Não faz leitura de memória
+                    mem_write <= '0';  -- Não faz escrita em memória
+                    jump     <= '0';  -- Não há salto
+                    eq_flag  <= '0';  -- Não é comparação
+                    gr_flag  <= '0';  -- Não é comparação
+                    halt     <= '1';  -- Sinaliza a espera
+
+                when others =>  -- Caso inválido ou não mapeado
+                    reg1     <= "0000";
+                    reg2     <= "0000";
+                    alu_op   <= "000";
+                    mem_read <= '0';
+                    mem_write <= '0";
+                    jump     <= '0';
+                    eq_flag  <= '0';
+                    gr_flag  <= '0';
+                    halt     <= '0';
+            end case;
+        end if;
+    end process;
+end Behavioral;
