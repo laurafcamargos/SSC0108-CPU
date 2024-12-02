@@ -73,7 +73,7 @@ Sendo op_code: código da instrução e reg_ selecionado: operadores A e B da in
 ### Code dos registradores
 
 | Registrador | Código Binário |
-|:-----------:|:--------------:r|
+|:-----------:|:--------------:|
 | A           | 00             |
 | B           | 01             |
 | R           | 10             |
