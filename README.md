@@ -11,33 +11,41 @@ especificações contidas neste [documento](img/TrabalhoFinalPráticaSistemasDig
 |   Sandy da Costa Dutra       	      |  12544570 |   
 |   Vitor Nishimura		              |  5255289  | 
 
-## Intruções
+## Instruções
 
 As instruções que o processador executa são: 
-• ADD Reg1, Reg2: Soma valores de Reg1 e Reg2, armazena o resultado
-em R.
-• SUB Reg1, Reg2: Subtrai Reg2 de Reg1, armazena o resultado em R.
-• AND Reg1, Reg2: Realiza operação AND entre Reg1 e Reg2, armazena o
-resultado em R.
-• OR Reg1, Reg2: Realiza operação OR entre Reg1 e Reg2, armazena o
-resultado em R.
-• NOT Reg1: Inverte os bits de Reg1, armazena o resultado em R.
-• CMP Reg1, Reg2: Compara Reg1 e Reg2, atualizando os registradores de
-flags.
-• JMP addr: Salta para o endereço addr.
-• JEQ addr: Salta para addr se o último resultado comparado for igual.
-• JGR addr: Salta para addr se o último resultado comparado for maior.
-• LOAD Reg1, addr: Carrega o valor do endereço addr para Reg1.
-• STORE Reg1, addr: Armazena o valor de Reg1 no endereço addr.
-• MOV Reg1, Reg2: Move o valor de Reg2 para Reg1.
-• IN Reg1: Lê o valor das chaves do FPGA e armazena em Reg1.
-• OUT Reg1: Exibe o valor de Reg1 nos LEDs.
-• WAIT: (Possível inclusão) Aguarda um sinal de entrada para continuar.
+
+- **ADD Reg1, Reg2:** Soma valores de Reg1 e Reg2, armazena o resultado em R.
+
+- **SUB Reg1, Reg2:** Subtrai Reg2 de Reg1, armazena o resultado em R.
+
+- **AND Reg1, Reg2:** Realiza operação AND entre Reg1 e Reg2, armazena o resultado em R.
+
+- **OR Reg1, Reg2:** Realiza operação OR entre Reg1 e Reg2, armazena o resultado em R.
+
+- **NOT Reg1:** Inverte os bits de Reg1, armazena o resultado em R.
+
+- **CMP Reg1, Reg2:** Compara Reg1 e Reg2, atualizando os registradores de flags.
+
+- **JMP addr:** Salta para o endereço addr.
+
+- **JEQ addr:** Salta para addr se o último resultado comparado for igual.
+
+- **JGR addr:** Salta para addr se o último resultado comparado for maior.
+
+- **LOAD Reg1, addr:** Carrega o valor do endereço addr para Reg1.
+
+- **STORE Reg1, addr:** Armazena o valor de Reg1 no endereço addr.
+
+- **MOV Reg1, Reg2:** Move o valor de Reg2 para Reg1.
+
+- **IN Reg1:** Lê o valor das chaves do FPGA e armazena em Reg1
+
 
 Cada instrução (linha) contida no arquivo .mif da memória possui 8 bits e apenas 3 registradores de manipulação (A,B,R), logo a interpretação da instrução ocorre da seguinte maneira:
 
 |        op_code                      |    reg_selecionado   |       
-|-------------------------------------|----------------------|  
+|:-----------------------------------:|:--------------------:|  
 |             0000                    |         0000         |   
 
 Sendo op_code: código da instrução e reg_ selecionado: operadores A e B da instrução.
@@ -45,7 +53,7 @@ Sendo op_code: código da instrução e reg_ selecionado: operadores A e B da in
 ### Code das intruções:
 
 | Instrução | Código Binário | Tipo             |
-|-----------|----------------|------------------|
+|:---------:|:--------------:|:----------------:|
 | ADD       | 0001           | Aritmética       |
 | SUB       | 0010           | Aritmética       |
 | AND       | 0011           | Aritmética       |
@@ -65,7 +73,7 @@ Sendo op_code: código da instrução e reg_ selecionado: operadores A e B da in
 ### Code dos registradores
 
 | Registrador | Código Binário |
-|-------------|----------------|
+|:-----------:|:--------------:|
 | A           | 00             |
 | B           | 01             |
 | R           | 10             |
