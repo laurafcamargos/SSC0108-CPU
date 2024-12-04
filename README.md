@@ -91,8 +91,12 @@ Diagrama que ilustra a configuração geral do processador, mostrando a integra�
     <img src ="img/cpu.png" style="max-width: 100%;" alt="integracao_componentes">
 </div>
 
-## Simulações:
+## Simulação ULA:
 
 <div align ="center">
     <img src ="img/ula.bmp" style="max-width: 100%;" alt="ULA">
 </div>
+
+Nessa simulação é possível observar o comportamento de todas as intruções da ULA, respeitando a atualização da flag ula_enable, não atualizando o resultado do output.
+
+## Simulação da Unidade de Controle:
