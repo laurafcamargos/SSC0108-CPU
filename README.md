@@ -99,7 +99,3 @@ Diagrama que ilustra a configuração geral do processador, mostrando a integra�
 
 Nessa simulação é possível observar o comportamento de todas as intruções da ULA, respeitando a atualização da flag ula_enable, não atualizando o resultado do output.
 
-## Simulação da Unidade de Controle:
-
-
-## 
