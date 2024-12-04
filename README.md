@@ -73,7 +73,8 @@ Sendo op_code: código da instrução e reg_ selecionado: operadores A e B da in
 ### Code dos registradores
 
 | Registrador | Código Binário |
-|:-----------:|:--------------:|
+|:-----------:|:--------------:
+|
 | A           | 00             |
 | B           | 01             |
 | R           | 10             |
@@ -88,4 +89,10 @@ Diagrama que ilustra a configuração geral do processador, mostrando a integra�
 
 <div align ="center">
     <img src ="img/cpu.png" style="max-width: 100%;" alt="integracao_componentes">
-</div> 
+</div>
+
+## Simulações:
+
+<div align ="center">
+    <img src ="img/ula.bmp" style="max-width: 100%;" alt="ULA">
+</div>
