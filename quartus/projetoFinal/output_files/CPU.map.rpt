@@ -1,0 +1,614 @@
+Analysis & Synthesis report for CPU
+Wed Dec  4 21:09:00 2024
+Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |UnidadeControleDiv|estado
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Port Connectivity Checks: "ula:ula_inst"
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2021  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Wed Dec  4 21:09:00 2024       ;
+; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
+; Revision Name                   ; CPU                                         ;
+; Top-level Entity Name           ; UnidadeControleDiv                          ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 100                                         ;
+; Total pins                      ; 19                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CEBA4F23C7        ;                    ;
+; Top-level entity name                                                           ; UnidadeControleDiv ; CPU                ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                  ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------+---------+
+; ula.vhd                          ; yes             ; User VHDL File  ; C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd                ;         ;
+; UnidadeControleDiv.vhd           ; yes             ; User VHDL File  ; C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 136       ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 216       ;
+;     -- 7 input functions                    ; 1         ;
+;     -- 6 input functions                    ; 44        ;
+;     -- 5 input functions                    ; 27        ;
+;     -- 4 input functions                    ; 46        ;
+;     -- <=3 input functions                  ; 98        ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 100       ;
+;                                             ;           ;
+; I/O pins                                    ; 19        ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 100       ;
+; Total fan-out                               ; 1300      ;
+; Average fan-out                             ; 3.67      ;
++---------------------------------------------+-----------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                        ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name              ; Entity Name        ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------+--------------------+--------------+
+; |UnidadeControleDiv        ; 216 (171)           ; 100 (100)                 ; 0                 ; 0          ; 19   ; 0            ; |UnidadeControleDiv              ; UnidadeControleDiv ; work         ;
+;    |ula:ula_inst|          ; 45 (45)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |UnidadeControleDiv|ula:ula_inst ; ula                ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------+--------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |UnidadeControleDiv|estado                                                                                                                                                ;
++-----------------------+---------------+---------------+---------------+----------------+-----------+-----------------------+----------------+-------------+---------------+---------------+
+; Name                  ; estado.cmp_en ; estado.espera ; estado.in_put ; estado.out_put ; estado.op ; estado.controle_fluxo ; estado.memoria ; estado.exec ; estado.decode ; estado.search ;
++-----------------------+---------------+---------------+---------------+----------------+-----------+-----------------------+----------------+-------------+---------------+---------------+
+; estado.search         ; 0             ; 0             ; 0             ; 0              ; 0         ; 0                     ; 0              ; 0           ; 0             ; 0             ;
+; estado.decode         ; 0             ; 0             ; 0             ; 0              ; 0         ; 0                     ; 0              ; 0           ; 1             ; 1             ;
+; estado.exec           ; 0             ; 0             ; 0             ; 0              ; 0         ; 0                     ; 0              ; 1           ; 0             ; 1             ;
+; estado.memoria        ; 0             ; 0             ; 0             ; 0              ; 0         ; 0                     ; 1              ; 0           ; 0             ; 1             ;
+; estado.controle_fluxo ; 0             ; 0             ; 0             ; 0              ; 0         ; 1                     ; 0              ; 0           ; 0             ; 1             ;
+; estado.op             ; 0             ; 0             ; 0             ; 0              ; 1         ; 0                     ; 0              ; 0           ; 0             ; 1             ;
+; estado.out_put        ; 0             ; 0             ; 0             ; 1              ; 0         ; 0                     ; 0              ; 0           ; 0             ; 1             ;
+; estado.in_put         ; 0             ; 0             ; 1             ; 0              ; 0         ; 0                     ; 0              ; 0           ; 0             ; 1             ;
+; estado.espera         ; 0             ; 1             ; 0             ; 0              ; 0         ; 0                     ; 0              ; 0           ; 0             ; 1             ;
+; estado.cmp_en         ; 1             ; 0             ; 0             ; 0              ; 0         ; 0                     ; 0              ; 0           ; 0             ; 1             ;
++-----------------------+---------------+---------------+---------------+----------------+-----------+-----------------------+----------------+-------------+---------------+---------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; ula:ula_inst|result[0]                              ; Equal14             ; yes                    ;
+; ula:ula_inst|result[1]                              ; Equal14             ; yes                    ;
+; ula:ula_inst|result[2]                              ; Equal14             ; yes                    ;
+; ula:ula_inst|result[3]                              ; Equal14             ; yes                    ;
+; ula:ula_inst|result[4]                              ; Equal14             ; yes                    ;
+; ula:ula_inst|result[5]                              ; Equal14             ; yes                    ;
+; ula:ula_inst|result[6]                              ; Equal14             ; yes                    ;
+; ula:ula_inst|result[7]                              ; Equal14             ; yes                    ;
+; igual_flag                                          ; Equal14             ; yes                    ;
+; ula:ula_inst|Neg                                    ; process_0           ; yes                    ;
+; Number of user-specified and inferred latches = 10  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; cmp_enable                            ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 1 ;                                        ;
++---------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 100   ;
+; Number of registers using Synchronous Clear  ; 24    ;
+; Number of registers using Synchronous Load   ; 40    ;
+; Number of registers using Asynchronous Clear ; 27    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 89    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |UnidadeControleDiv|mem[255][0]        ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |UnidadeControleDiv|regAUXB[6]         ;
+; 256:1              ; 8 bits    ; 1360 LEs      ; 112 LEs              ; 1248 LEs               ; Yes        ; |UnidadeControleDiv|instrucao[1]       ;
+; 26:1               ; 8 bits    ; 136 LEs       ; 0 LEs                ; 136 LEs                ; Yes        ; |UnidadeControleDiv|rAUX[6]            ;
+; 22:1               ; 8 bits    ; 112 LEs       ; 16 LEs               ; 96 LEs                 ; Yes        ; |UnidadeControleDiv|reg_b[5]           ;
+; 22:1               ; 8 bits    ; 112 LEs       ; 16 LEs               ; 96 LEs                 ; Yes        ; |UnidadeControleDiv|reg_a[5]           ;
+; 30:1               ; 8 bits    ; 160 LEs       ; 48 LEs               ; 112 LEs                ; Yes        ; |UnidadeControleDiv|regAUXA[7]         ;
+; 27:1               ; 8 bits    ; 144 LEs       ; 16 LEs               ; 128 LEs                ; Yes        ; |UnidadeControleDiv|program_counter[1] ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |UnidadeControleDiv|Mux15              ;
+; 15:1               ; 8 bits    ; 80 LEs        ; 48 LEs               ; 32 LEs                 ; No         ; |UnidadeControleDiv|ula:ula_inst|Mux11 ;
+; 16:1               ; 3 bits    ; 30 LEs        ; 12 LEs               ; 18 LEs                 ; No         ; |UnidadeControleDiv|Mux134             ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 8 LEs                ; 12 LEs                 ; No         ; |UnidadeControleDiv|Mux133             ;
+; 6:1                ; 5 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |UnidadeControleDiv|estado             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ula:ula_inst"                                                                           ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; carry    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; borrow   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; overflow ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 100                         ;
+;     CLR               ; 11                          ;
+;     ENA               ; 33                          ;
+;     ENA CLR           ; 8                           ;
+;     ENA CLR SLD       ; 8                           ;
+;     ENA SCLR          ; 8                           ;
+;     ENA SCLR SLD      ; 16                          ;
+;     ENA SLD           ; 16                          ;
+; arriav_lcell_comb     ; 216                         ;
+;     arith             ; 17                          ;
+;         1 data inputs ; 9                           ;
+;         3 data inputs ; 8                           ;
+;     extend            ; 1                           ;
+;         7 data inputs ; 1                           ;
+;     normal            ; 190                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 18                          ;
+;         3 data inputs ; 51                          ;
+;         4 data inputs ; 46                          ;
+;         5 data inputs ; 27                          ;
+;         6 data inputs ; 44                          ;
+;     shared            ; 8                           ;
+;         2 data inputs ; 8                           ;
+; boundary_port         ; 19                          ;
+;                       ;                             ;
+; Max LUT depth         ; 4.20                        ;
+; Average LUT depth     ; 2.41                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
+    Info: Processing started: Wed Dec  4 21:08:49 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file ula.vhd
+    Info (12022): Found design unit 1: ula-Behavioral File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 19
+    Info (12023): Found entity 1: ula File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file unidadecontrole.vhd
+    Info (12022): Found design unit 1: UnidadeControle-Behavioral File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControle.vhd Line: 16
+    Info (12023): Found entity 1: UnidadeControle File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControle.vhd Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file computer.bdf
+    Info (12023): Found entity 1: computer
+Info (12021): Found 1 design units, including 1 entities, in source file debug.bdf
+    Info (12023): Found entity 1: debug
+Info (12021): Found 1 design units, including 1 entities, in source file display7seg.bdf
+    Info (12023): Found entity 1: display7seg
+Info (12021): Found 2 design units, including 1 entities, in source file unidadecontrolemult.vhd
+    Info (12022): Found design unit 1: UnidadeControleMult-Behavioral File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleMult.vhd Line: 16
+    Info (12023): Found entity 1: UnidadeControleMult File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleMult.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file unidadecontrolediv.vhd
+    Info (12022): Found design unit 1: UnidadeControleDiv-Behavioral File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 16
+    Info (12023): Found entity 1: UnidadeControleDiv File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 6
+Info (12127): Elaborating entity "UnidadeControleDiv" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at UnidadeControleDiv.vhd(21): object "operacao" assigned a value but never read File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 21
+Warning (10036): Verilog HDL or VHDL warning at UnidadeControleDiv.vhd(28): object "carry_flag" assigned a value but never read File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 28
+Warning (10036): Verilog HDL or VHDL warning at UnidadeControleDiv.vhd(28): object "borrow_flag" assigned a value but never read File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 28
+Warning (10036): Verilog HDL or VHDL warning at UnidadeControleDiv.vhd(28): object "overflow_flag" assigned a value but never read File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 28
+Warning (10492): VHDL Process Statement warning at UnidadeControleDiv.vhd(345): signal "ula_enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 345
+Warning (10492): VHDL Process Statement warning at UnidadeControleDiv.vhd(346): signal "ula_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 346
+Warning (10492): VHDL Process Statement warning at UnidadeControleDiv.vhd(347): signal "r_write" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 347
+Warning (10492): VHDL Process Statement warning at UnidadeControleDiv.vhd(348): signal "rAUX" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 348
+Warning (10492): VHDL Process Statement warning at UnidadeControleDiv.vhd(350): signal "cmp_enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 350
+Warning (10631): VHDL Process Statement warning at UnidadeControleDiv.vhd(63): inferring latch(es) for signal or variable "mem", which holds its previous value in one or more paths through the process File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Warning (10631): VHDL Process Statement warning at UnidadeControleDiv.vhd(63): inferring latch(es) for signal or variable "cmp_flag", which holds its previous value in one or more paths through the process File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Warning (10631): VHDL Process Statement warning at UnidadeControleDiv.vhd(63): inferring latch(es) for signal or variable "igual_flag", which holds its previous value in one or more paths through the process File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "igual_flag" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "cmp_flag" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[16][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[16][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[16][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[16][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[16][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[16][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[16][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[16][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[15][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[15][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[15][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[15][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[15][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[15][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[15][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[15][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[14][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[14][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[14][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[14][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[14][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[14][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[14][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[14][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[13][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[13][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[13][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[13][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[13][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[13][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[13][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[13][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[12][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[12][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[12][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[12][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[12][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[12][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[12][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[12][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[11][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[11][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[11][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[11][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[11][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[11][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[11][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[11][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[10][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[10][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[10][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[10][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[10][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[10][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[10][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[10][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[9][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[9][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[9][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[9][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[9][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[9][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[9][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[9][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[8][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[8][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[8][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[8][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[8][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[8][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[8][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[8][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[7][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[7][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[7][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[7][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[7][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[7][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[7][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[7][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[6][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[6][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[6][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[6][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[6][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[6][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[6][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[6][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[5][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[5][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[5][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[5][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[5][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[5][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[5][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[5][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[4][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[4][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[4][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[4][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[4][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[4][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[4][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[4][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[3][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[3][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[3][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[3][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[3][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[3][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[3][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[3][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[2][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[2][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[2][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[2][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[2][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[2][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[2][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[2][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[1][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[1][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[1][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[1][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[1][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[1][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[1][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[1][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[0][0]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[0][1]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[0][2]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[0][3]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[0][4]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[0][5]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[0][6]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (10041): Inferred latch for "mem[0][7]" at UnidadeControleDiv.vhd(63) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 63
+Info (12128): Elaborating entity "ula" for hierarchy "ula:ula_inst" File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 48
+Warning (10492): VHDL Process Statement warning at ula.vhd(63): signal "cmp_enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 63
+Warning (10492): VHDL Process Statement warning at ula.vhd(88): signal "ula_enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 88
+Warning (10492): VHDL Process Statement warning at ula.vhd(92): signal "result_anterior" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 92
+Warning (10631): VHDL Process Statement warning at ula.vhd(30): inferring latch(es) for signal or variable "result", which holds its previous value in one or more paths through the process File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Warning (10631): VHDL Process Statement warning at ula.vhd(30): inferring latch(es) for signal or variable "Carry", which holds its previous value in one or more paths through the process File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Warning (10631): VHDL Process Statement warning at ula.vhd(30): inferring latch(es) for signal or variable "Overflow", which holds its previous value in one or more paths through the process File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Warning (10631): VHDL Process Statement warning at ula.vhd(30): inferring latch(es) for signal or variable "Borrow", which holds its previous value in one or more paths through the process File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Warning (10631): VHDL Process Statement warning at ula.vhd(30): inferring latch(es) for signal or variable "Neg", which holds its previous value in one or more paths through the process File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Warning (10631): VHDL Process Statement warning at ula.vhd(30): inferring latch(es) for signal or variable "result_anterior", which holds its previous value in one or more paths through the process File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result_anterior[0]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result_anterior[1]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result_anterior[2]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result_anterior[3]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result_anterior[4]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result_anterior[5]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result_anterior[6]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result_anterior[7]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "Neg" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "Borrow" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "Overflow" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "Carry" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result[0]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result[1]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result[2]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result[3]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result[4]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result[5]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result[6]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Info (10041): Inferred latch for "result[7]" at ula.vhd(30) File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+Warning (13012): Latch ula:ula_inst|result[0] has unsafe behavior File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal op_code[3] File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+Warning (13012): Latch ula:ula_inst|result[1] has unsafe behavior File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal op_code[3] File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+Warning (13012): Latch ula:ula_inst|result[2] has unsafe behavior File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal op_code[3] File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+Warning (13012): Latch ula:ula_inst|result[3] has unsafe behavior File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal op_code[3] File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+Warning (13012): Latch ula:ula_inst|result[4] has unsafe behavior File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal op_code[3] File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+Warning (13012): Latch ula:ula_inst|result[5] has unsafe behavior File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal op_code[3] File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+Warning (13012): Latch ula:ula_inst|result[6] has unsafe behavior File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal op_code[3] File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+Warning (13012): Latch ula:ula_inst|result[7] has unsafe behavior File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal op_code[3] File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+Warning (13012): Latch ula:ula_inst|Neg has unsafe behavior File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/ula.vhd Line: 12
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal op_code[3] File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "reg_r[0]" is converted into an equivalent circuit using register "reg_r[0]~_emulated" and latch "reg_r[0]~1" File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+    Warning (13310): Register "reg_r[1]" is converted into an equivalent circuit using register "reg_r[1]~_emulated" and latch "reg_r[1]~5" File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+    Warning (13310): Register "reg_r[2]" is converted into an equivalent circuit using register "reg_r[2]~_emulated" and latch "reg_r[2]~9" File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+    Warning (13310): Register "reg_r[3]" is converted into an equivalent circuit using register "reg_r[3]~_emulated" and latch "reg_r[3]~13" File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+    Warning (13310): Register "reg_r[4]" is converted into an equivalent circuit using register "reg_r[4]~_emulated" and latch "reg_r[4]~17" File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+    Warning (13310): Register "reg_r[5]" is converted into an equivalent circuit using register "reg_r[5]~_emulated" and latch "reg_r[5]~21" File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+    Warning (13310): Register "reg_r[6]" is converted into an equivalent circuit using register "reg_r[6]~_emulated" and latch "reg_r[6]~25" File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+    Warning (13310): Register "reg_r[7]" is converted into an equivalent circuit using register "reg_r[7]~_emulated" and latch "reg_r[7]~29" File: C:/Users/5255289/Downloads/Mult-20241204T161219Z-001/Mult/projetoFinal/UnidadeControleDiv.vhd Line: 65
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 276 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 11 input pins
+    Info (21059): Implemented 8 output pins
+    Info (21061): Implemented 257 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 49 warnings
+    Info: Peak virtual memory: 4875 megabytes
+    Info: Processing ended: Wed Dec  4 21:09:00 2024
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:20
+
+

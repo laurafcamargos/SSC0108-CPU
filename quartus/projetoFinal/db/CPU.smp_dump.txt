@@ -1,0 +1,13 @@
+
+State Machine - |UnidadeControleDiv|estado
+Name estado.cmp_en estado.espera estado.in_put estado.out_put estado.op estado.controle_fluxo estado.memoria estado.exec estado.decode estado.search 
+estado.search 0 0 0 0 0 0 0 0 0 0 
+estado.decode 0 0 0 0 0 0 0 0 1 1 
+estado.exec 0 0 0 0 0 0 0 1 0 1 
+estado.memoria 0 0 0 0 0 0 1 0 0 1 
+estado.controle_fluxo 0 0 0 0 0 1 0 0 0 1 
+estado.op 0 0 0 0 1 0 0 0 0 1 
+estado.out_put 0 0 0 1 0 0 0 0 0 1 
+estado.in_put 0 0 1 0 0 0 0 0 0 1 
+estado.espera 0 1 0 0 0 0 0 0 0 1 
+estado.cmp_en 1 0 0 0 0 0 0 0 0 1 
